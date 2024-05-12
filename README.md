@@ -86,6 +86,26 @@ export default defineNuxtConfig({
 })
 ```
 
+## NPM Packages
+
+### [Nuxt Icons](https://nuxt.com/modules/icon)
+
+- Add `nuxt-icon` dependency to your project:
+
+```bash
+npm install --save-dev nuxt-icon
+```
+
+- Add it to the `modules` array in your `nuxt.config.ts`:
+
+```bash
+import { defineNuxtConfig } from 'nuxt'
+
+export default defineNuxtConfig({
+  modules: ['nuxt-icon']
+})
+```
+
 ## Nuxt 3 Minimal Starter
 
 Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
