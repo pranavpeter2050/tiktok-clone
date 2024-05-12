@@ -106,6 +106,25 @@ export default defineNuxtConfig({
 })
 ```
 
+### [Pinia - @pinia/nuxt](https://www.npmjs.com/package/@pinia/nuxt)
+
+```bash
+npm i @pinia/nuxt
+```
+
+- Add to `modules` (Nuxt 3) or buildModules (Nuxt 2) in `nuxt.config.js`:
+
+```bash
+// Nuxt 2
+export default {
+  buildModules: [['@pinia/nuxt', { disableVuex: true }]],
+}
+// Nuxt 3
+export default defineNuxtConfig({
+    modules: ['@pinia/nuxt'],
+})
+```
+
 ## Nuxt 3 Minimal Starter
 
 Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.

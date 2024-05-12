@@ -3,7 +3,8 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   css: ['~/assets/css/main.css'],
   modules: [
-    'nuxt-icon'
+    'nuxt-icon',
+    '@pinia/nuxt',
   ],
   postcss: {
     plugins: {
