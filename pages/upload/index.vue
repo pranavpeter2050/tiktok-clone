@@ -1,4 +1,6 @@
 <template>
+  <UploadError :errorType="errorType" />
+
   <UploadLayout>
     <div class="w-full mt-[80px] mb-[40px] bg-white shadow-lg rounded-md py-6 md:px-10 px-4">
       <div>
@@ -8,8 +10,10 @@
 
       <div class="mt-8 md:flex gap-6">
         <label 
-          v-if="false"
+          v-if="!fileDisplay"
           for="fileInput"
+          @drop.prevent="onDrop"
+          @dragover.prevent=""
           class="
             md:mx-0
             mx-auto
@@ -46,6 +50,7 @@
             ref="file"
             type="file"
             id="fileInput"
+            @input="onChange"
             hidden
             accept=".mp4"
           >
@@ -89,15 +94,15 @@
             loop
             muted
             class="absolute rounded-xl object-cover z-10 p-[13px] w-full h-full"
-            src="/making-spagetti.mp4" 
+            :src="fileDisplay" 
           />
 
           <div class="absolute -bottom-12 flex items-center justify-between z-50 rounded-xl border w-full p-2 border-gray-300">
             <div class="flex items-center truncate">
               <Icon name="clarity:success-standard-line" size="16" class="min-w-[16px]" />
-              <div class="text-[11px] pl-1 truncate text-ellipsis">video name</div>
+              <div class="text-[11px] pl-1 truncate text-ellipsis">{{ fileData.name }}</div>
             </div>
-            <button class="text-[11px] ml-2 font-semibold">
+            <button @click="clearVideo" class="text-[11px] ml-2 font-semibold">
               Change
             </button>
           </div>
@@ -124,9 +129,10 @@
           <div class="mt-5">
             <div class="flex items-center justify-between">
               <div class="mb-1 text-[15px]">Caption</div>
-              <div class="text-gray-400 text-[12px]">0/150</div>
+              <div class="text-gray-400 text-[12px]">{{ caption.length }}/150</div>
             </div>
             <input 
+              v-model="caption"
               maxlength="150"
               type="text"
               class="
@@ -140,7 +146,10 @@
           </div>
 
           <div class="flex gap-3">
-            <button class="px-10 py-2.5 mt-8 border text-[16px] hover:bg-gray-100 rounded-sm">
+            <button
+              @click="$event => discard()"
+              class="px-10 py-2.5 mt-8 border text-[16px] hover:bg-gray-100 rounded-sm"
+            >
               Discard
             </button>
             <button class="px-10 py-2.5 mt-8 border text-[16px] text-white bg-[#f02c56] rounded-sm">
@@ -155,4 +164,53 @@
 
 <script setup>
 import UploadLayout from '~/layouts/UploadLayout.vue';
+import UploadError from '~/components/UploadError.vue';
+
+let file = ref(null)
+let fileDisplay = ref(null)
+let errorType = ref(null)
+let caption = ref('')
+let fileData = ref(null)
+let errors = ref(null)
+let isUploading = ref(false)
+
+watch(() => caption.value, (caption) => {
+  if (caption.length >= 150) {
+    errorType.value = 'caption'
+    return
+  }
+  errorType.value = null
+})
+
+const onChange = () => {
+  fileDisplay.value = URL.createObjectURL(file.value.files[0])
+  fileData.value = file.value.files[0]
+}
+
+const onDrop = (e) => {
+  errorType.value = ''
+  file.value = e.dataTransfer.files[0]
+  fileData.value = e.dataTransfer.files[0]
+
+  let extension = file.value.name.substring(file.value.name.lastIndexOf('.') + 1)
+  if (extension !== 'mp4') {
+    errorType.value = 'file'
+    return
+  }
+
+  fileDisplay.value = URL.createObjectURL(e.dataTransfer.files[0])
+}
+
+const discard = () => {
+  file.value = null
+  fileDisplay.value = null
+  fileData.value = null
+  caption.value = ''
+}
+
+const clearVideo = () => {
+  file.value = null
+  fileDisplay.value = null
+  fileData.value = null
+}
 </script>
