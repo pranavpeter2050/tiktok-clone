@@ -109,6 +109,12 @@ export default defineNuxtConfig({
 })
 ```
 
+### Install axios
+
+```bash
+npm i axios
+```
+
 ### [Pinia - @pinia/nuxt](https://www.npmjs.com/package/@pinia/nuxt)
 
 ```bash
