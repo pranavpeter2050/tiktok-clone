@@ -1,7 +1,5 @@
 <template>
-  <MainLayout>
-    
-  </MainLayout>
+  <TopNav />
 </template>
 
 <script>
