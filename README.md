@@ -1,5 +1,8 @@
 # Tiktok clone frontend using Nuxt
 
+Reference Youtube link `https://www.youtube.com/watch?v=CHSL0Btbj_o`
+Reference Github repo: `https://github.com/John-Weeks-Dev/tiktok-clone`
+
 Create project via `vite` command. (See [docs](https://vitejs.dev/guide/))
 
 ```bash
@@ -122,6 +125,50 @@ export default {
 // Nuxt 3
 export default defineNuxtConfig({
     modules: ['@pinia/nuxt'],
+})
+```
+
+### [pinia-plugin-persistedstate](https://prazdevs.github.io/pinia-plugin-persistedstate/)
+
+- Installation
+
+```bash
+npm i pinia-plugin-persistedstate
+```
+
+- Add it to the `modules` array in your `nuxt.config.ts`:
+
+```bash
+import { defineNuxtConfig } from 'nuxt'
+
+export default defineNuxtConfig({
+  modules: [
+    'nuxt-icon',
+    '@pinia/nuxt',
+    '@pinia-plugin-persistedstate/nuxt'
+  ],
+})
+```
+
+### Finally
+
+... add `pages: true` at the top in your `nuxt.config.ts`:
+
+```bash
+export default defineNuxtConfig({
+  pages: true,
+  css: ['~/assets/css/main.css'],
+  modules: [
+    'nuxt-icon',
+    '@pinia/nuxt',
+    '@pinia-plugin-persistedstate/nuxt',
+  ],
+  postcss: {
+    plugins: {
+      tailwindcss: {},
+      autoprefixer: {},
+    },
+  },
 })
 ```
 
