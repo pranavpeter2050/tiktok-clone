@@ -38,7 +38,7 @@
       ></video>
 
       <div 
-        v-if="true"
+        v-if="!isLoaded"
         class="flex items-center justify-center bg-black bg-opacity-70 h-screen lg:min-w-[480px]"
       >
         <Icon class="animate-spin ml-1" name="mingcute:loading-line" size="100" color="#ffffff" />
@@ -212,13 +212,15 @@ let comment = ref(null)
 let inputFocused = ref(false)
 
 onMounted(() => {
-  video.value.addEventListener('loadeddata', (e) => {
-    if (e.target) {
-      setTimeout(() => {
-        isLoaded.value = true
-      }, 500)
-    }
-  })
+  isLoaded.value = true
+  video.value.play()
+  // video.value.addEventListener('loadeddata', (e) => {
+  //   if (e.target) {
+  //     setTimeout(() => {
+  //       isLoaded.value = true
+  //     }, 500)
+  //   }
+  // })
 })
 
 onBeforeUnmount(() => {
