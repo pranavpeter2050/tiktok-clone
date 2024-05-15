@@ -156,6 +156,12 @@ export default defineNuxtConfig({
 })
 ```
 
+## vue-advanced-cropper
+
+```bash
+npm i vue-advanced-cropper
+```
+
 ### Finally
 
 ... add `pages: true` at the top in your `nuxt.config.ts`:
