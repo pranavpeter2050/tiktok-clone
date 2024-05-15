@@ -3,8 +3,7 @@
 
   <AuthOverlay v-if="isLoginOpen"/>
 
-  <!-- <EditProfileOverlay v-if="isEditProfileOpen"/> -->
-  <EditProfileOverlay/>
+  <EditProfileOverlay v-if="isEditProfileOpen"/>
 </template>
 
 <script setup>

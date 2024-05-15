@@ -147,7 +147,14 @@ import { Cropper, CircleStencil } from 'vue-advanced-cropper'
 import 'vue-advanced-cropper/dist/style.css'
 
 import { storeToRefs } from 'pinia'
-const { $generalStore } = useNuxtApp()
+const { $userStore, $generalStore, $profileStore } = useNuxtApp()
+const { name, bio, image } = storeToRefs($userStore)
+
+onMounted(() => {
+  userName.value = name.value
+  userBio.value = bio.value
+  userImage.value = image.value
+})
 
 let file = ref(null)
 let cropper = ref(null)
@@ -161,4 +168,22 @@ const getUploadedImage = (e) => {
   file.value = e.target.files[0]
   uploadedImage.value = URL.createObjectURL(file.value)
 }
+
+watch(() => userName.value, () => {
+  if (!userName.value || userName.value === name.value) {
+    isUpdated.value = false
+  }
+  else {
+    isUpdated.value = true
+  }
+})
+
+watch(() => userBio.value, () => {
+  if (!userBio.value || userBio.value.length < 1) {
+    isUpdated.value = false
+  }
+  else {
+    isUpdated.value = true
+  }
+})
 </script>
