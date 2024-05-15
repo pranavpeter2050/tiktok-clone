@@ -4,7 +4,7 @@
   <AuthOverlay v-if="isLoginOpen"/>
 </template>
 
-<script setuo>
+<script setup>
 import { storeToRefs } from 'pinia';
 
 const { $generalStore } = useNuxtApp()

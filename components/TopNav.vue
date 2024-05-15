@@ -30,14 +30,17 @@
           <span class="px-2 font-medium text-[15px]">Upload</span>
         </button>
 
-        <div v-if="false" class="flex items-center">
-          <button class="flex items-center bg-[#f02c56] text-white border rounded-md px-3 py-[6px]">
+        <div v-if="!$userStore.id" class="flex items-center">
+          <button
+            @click="$generalStore.isLoginOpen = true" 
+            class="flex items-center bg-[#f02c56] text-white border rounded-md px-3 py-[6px]"
+          >
             <span class="mx-4 font-medium text-[15px]">Log in</span>
           </button>
           <Icon name="mdi:dots-vertical" color="#161724" size="25" />
         </div>
 
-        <div class="flex items-center">
+        <div v-else class="flex items-center">
           <Icon class="ml-1 mr-4" name="carbon:send-alt" color="#161724" size="30" />
           <Icon class="mr-5" name="bx:message-detail" color="#161724" size="27" />
           <div class="relative">
@@ -80,10 +83,13 @@
 <script>
 export default {
   setup() {
+    const { $userStore, $generalStore } = useNuxtApp()
     const route = useRoute()
     let showMenu = ref(false)
 
     return {
+      $userStore,
+      $generalStore,
       route,
       showMenu
     }
