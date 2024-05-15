@@ -1,7 +1,7 @@
 <template>
   <div>
     <input 
-      :id="`input=${placeholder}`"
+      :id="`input-${placeholder}`"
       :placeholder="placeholder"
       class="
         block
