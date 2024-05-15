@@ -139,7 +139,7 @@ export default defineNuxtConfig({
 - Installation
 
 ```bash
-npm i pinia-plugin-persistedstate
+npm i @pinia-plugin-persistedstate/nuxt
 ```
 
 - Add it to the `modules` array in your `nuxt.config.ts`:
