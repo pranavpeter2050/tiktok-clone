@@ -27,6 +27,14 @@ export const useGeneralStore = defineStore('general', {
       document.body.style.overflow = 'visible'
     },
 
+    allLowerCaseNoCaps(str) {
+      return str.split(' ').join('').toLowerCase()
+    },
+
+    setBackUrl(url) {
+      this.isBackUrl = url
+    },
+
     async hasSessionsExpired() {
       await $axios.interceptors.response.use((response) => {
         // axios Call was successful, continue...
