@@ -42,6 +42,19 @@ export const useUserStore = defineStore('user', {
       this.$state.bio = response.data[0].bio
       this.$state.image = response.data[0].image
     },
+
+    async logout() {
+      await $axios.post('/logout')
+      this.resetUser()
+    },
+
+    resetUser() {
+      this.$state.id = ''
+      this.$state.name = ''
+      this.$state.email = ''
+      this.$state.bio = ''
+      this.$state.image = ''
+    }
   },
   persist: true
 })
