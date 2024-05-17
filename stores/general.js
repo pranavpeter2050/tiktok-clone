@@ -19,6 +19,14 @@ export const useGeneralStore = defineStore('general', {
     doubleCount: (state) => state.count * 2,
   },
   actions: {
+    bodySwitch(val) {
+      if (val) {
+        document.body.style.overflow = 'hidden'
+        return
+      }
+      document.body.style.overflow = 'visible'
+    },
+
     async hasSessionsExpired() {
       await $axios.interceptors.response.use((response) => {
         // axios Call was successful, continue...
