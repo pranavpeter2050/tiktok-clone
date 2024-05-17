@@ -7,7 +7,7 @@
       v-model:input="name"
       inputType="text"
       :autofocus="true"
-      error=""
+      :error="errors && errors.name ? errors.name[0] : ''"
     />
   </div>
 
@@ -16,6 +16,7 @@
       placeholder="Email address"
       v-model:input="email"
       inputType="email"
+      :error="errors && errors.email ? errors.email[0] : ''"
     />
   </div>
 
@@ -24,6 +25,7 @@
       placeholder="Password"
       v-model:input="password"
       inputType="password"
+      :error="errors && errors.password ? errors.password[0] : ''"
     />
   </div>
 
@@ -32,6 +34,7 @@
       placeholder="Confirm password"
       v-model:input="confirmPassword"
       inputType="password"
+      :error="errors && errors.confirmPassword ? errors.confirmPassword[0] : ''"
     />
   </div>
 

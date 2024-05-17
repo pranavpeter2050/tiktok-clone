@@ -7,7 +7,7 @@
         block
         w-full
         bg-[#f1f1f2]
-        text-gray-300
+        text-gray-800
         border
         border-gray-300
         rounded-md

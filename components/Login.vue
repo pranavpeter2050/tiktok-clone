@@ -9,7 +9,7 @@
       v-model:input="email"
       inputType="email"
       :autofocus="true"
-      error=""
+      :error="errors && errors.email ? errors.email[0] : ''"
     />
   </div>
 
