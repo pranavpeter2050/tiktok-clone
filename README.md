@@ -89,6 +89,10 @@ export default defineNuxtConfig({
 })
 ```
 
+### Axios Interceptors
+
+We will need to add `axios interceptors` to check for when a user-login-session has expired
+
 ## NPM Packages
 
 ### [Nuxt Icons](https://nuxt.com/modules/icon)
@@ -185,6 +189,8 @@ export default defineNuxtConfig({
 ```
 
 ## ! Pinia stuff starts at around 1:27:15 time !
+
+## Connecting Login, Registration and Logout with backend
 
 ## Nuxt 3 Minimal Starter
 
