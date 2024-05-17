@@ -89,9 +89,13 @@ export default defineNuxtConfig({
 })
 ```
 
-### Axios Interceptors
+### Axios Interceptors @2:13:30
 
 We will need to add `axios interceptors` to check for when a user-login-session has expired
+The `hasSessionsExpired` method is defined in `$generalStore` and is mounted in the `app.vue` file so that whenever the (frontend) application is mounted, the `hasSessionsExpired` is always running.
+
+The `SESSION_LIFETIME=120`, (120 minutes) by default. So after 2hrs of non-activity, the axios interceptors will intercept API call and check if the response status is in [401, 419, 503]. If yes, then we will get logged out. If its 500 then we will get an "alert".
+
 
 ## NPM Packages
 
