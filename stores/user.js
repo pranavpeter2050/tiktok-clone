@@ -25,6 +25,15 @@ export const useUserStore = defineStore('user', {
       })
     },
 
+    async register(name, email, password, confirmPassword) {
+      await $axios.post('/register', {
+        name: name,
+        email: email,
+        password: password,
+        confirmPassword: confirmPassword,
+      })
+    },
+
     async getUser() {
       let response = await $axios.get('/api/logged-in-user')
 
