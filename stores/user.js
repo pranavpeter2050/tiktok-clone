@@ -56,7 +56,44 @@ export const useUserStore = defineStore('user', {
     },
 
     async createPost(data) {
-      return await $axios.post('/api/posts', data)
+      return await $axios.post('/api/posts', data, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      })
+    },
+
+    async addComment(post, comment) {
+      let res = await $axios.post('/api/comments', {
+        post_id: post.id,
+        comment: comment
+      })
+
+      if (res.status === 200) {
+        await this.updateComments(post)
+      }
+    },
+
+    async deleteComment(post, commentId) {
+      let res = await $axios.delete(`/api/comments/${commentId}`, {
+        post_id: post.id
+      })
+
+      if (res.status === 200) {
+        await this.updateComments(post)
+      }
+    },
+
+    async updateComments(post) {
+      let res = await $axios.get(`/api/profiles/${post.user.id}`)
+
+      for (let i=0; i < res.data.posts.length; i++) {
+        const updatePost = res.data.posts[i];
+
+        if (post.id === updatePost.id) {
+          useGeneralStore().selectedPost.comments = updatePost.comments
+        }
+      }
     },
 
     async likePost(post, isPostPage) {

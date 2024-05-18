@@ -174,7 +174,7 @@ npm i vue-advanced-cropper
 
 ... add `pages: true` at the top in your `nuxt.config.ts`:
 
-```bash
+```php
 export default defineNuxtConfig({
   pages: true,
   css: ['~/assets/css/main.css'],
