@@ -160,7 +160,7 @@ const isLoggedIn = (user) => {
 }
 
 const displayPost = (post) => {
-  if (!$postStore.id) {
+  if (!$userStore.id) {
     $generalStore.isLoginOpen = true
     return
   }
