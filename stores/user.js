@@ -63,6 +63,10 @@ export const useUserStore = defineStore('user', {
       })
     },
 
+    async deletePost(post) {
+      return await $axios.delete(`/api/posts/${post.id}`)
+    },
+
     async addComment(post, comment) {
       let res = await $axios.post('/api/comments', {
         post_id: post.id,
