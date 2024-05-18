@@ -68,15 +68,15 @@
 </template>
 
 <script setup>
-  const { $generalStore, $userStore } = useNuxtApp()
-  const route = useRoute()
-  const router = useRouter()
+const { $generalStore, $userStore } = useNuxtApp()
+const route = useRoute()
+const router = useRouter()
 
-  const isLoggedIn = (following) => {
-    if (!$userStore.id) {
-      $generalStore.isLoginOpen = true
-      return
-    }
-    setTimeout(() => router.push(`/profile/${following.id}`), 200)
+const isLoggedIn = (following) => {
+  if (!$userStore.id) {
+    $generalStore.isLoginOpen = true
+    return
+  }
+  setTimeout(() => router.push(`/profile/${following.id}`), 200)
 }
 </script>
