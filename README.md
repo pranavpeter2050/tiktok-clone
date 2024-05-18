@@ -196,6 +196,17 @@ export default defineNuxtConfig({
 
 ## Connecting Login, Registration and Logout with backend
 
+## Adding `middleware` to the Nuxt app
+
+Create a folder called `middleware` and create a new file called `auth.js` inside it. 
+Middleware is used to make sure that unauthenticated users cannot access pages meant for logged-in users.
+
+Add the below line to all pages of your Nuxt app.
+
+```javascript
+definePageMeta({ middleware: 'auth' })
+```
+
 ## Nuxt 3 Minimal Starter
 
 Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
